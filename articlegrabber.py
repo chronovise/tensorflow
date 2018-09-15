@@ -51,7 +51,6 @@ def getStarArticles():
     for i in range(0,len(titles)-1):
         star_articles.append([titles[i], hyperlinks[i]])
     
-    print(star_articles)
 
     return star_articles
 

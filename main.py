@@ -1,9 +1,16 @@
 import articlegrabber as ag
 import random as rand
+import pygame
+from pygame.locals import *
 
 save = open("save.txt")
 
 state_new = False
+
+(screen_width,screen_height) = (1000,800)
+
+program_name = "Chronovise"
+background_colour = (255,255,255)
 
 if save.read() == "none":
     state_new = True
@@ -37,8 +44,21 @@ def getNewsFeed():
 
 
 def main():
-    ag.printArticle(star_articles)
-    print("-----------------------------------------------")
-    ag.printArticle(nyt_articles)
+    #initialize the screen width and height
+    screen = pygame.display.set_mode([screen_width,screen_height])    
+    
+    #set the caption/title for the screen
+    pygame.display.set_caption(program_name)
+    screen.fill(background_colour)
 
+    pygame.display.flip()
+
+    running = True
+
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False;
+                exit()
+    
 main()
