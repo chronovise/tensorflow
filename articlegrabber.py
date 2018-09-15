@@ -3,7 +3,7 @@ import urllib.request
 
 def printArticle(articles):
     for i in articles:
-        print(articles[0], articles[1])
+        print(articles[i])
 
 def getNYTArticles():
     titles = []
@@ -42,13 +42,16 @@ def getStarArticles():
 
     for title in article_titles:
         titles.append(title.text)
-        ids.append(title['data-reactid'])
+        ids.append(title["data-reactid"])
 
     for url in urls:
-        if(((str)((int)(url['data-reactid'])+1)) in ids):
+        if ((str)((int)(url['data-reactid'])+1)) in ids:
             hyperlinks.append(website+url['href'])
 
     for i in range(0,len(titles)-1):
         star_articles.append([titles[i], hyperlinks[i]])
+    
+    print(star_articles)
 
     return star_articles
+
